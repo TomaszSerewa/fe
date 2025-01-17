@@ -1,0 +1,124 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 20px;
+  gap: 20px
+  
+}
+.letter-button {
+  font-size: 48px;
+  padding: 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.alphabet-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.letter-box {
+  display: flex;
+  background-color: black;
+  border: 2px solid #000;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.letter-square {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  border-right: 2px solid #000;
+  background: black;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.stars-square {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  position: relative;
+}
+
+.star {
+  font-size: 16px;
+  position: absolute;
+}
+
+.star.full {
+  color: gold;
+}
+
+.star.half {
+  color: gold;
+  background-color: black;
+}
+
+.star.empty {
+  color: lightgray;
+}
+
+.star.top-left {
+  top: 5px;
+  left: 5px;
+}
+
+.star.top-right {
+  top: 5px;
+  right: 5px;
+}
+
+.star.bottom-left {
+  bottom: 5px;
+  left: 5px;
+}
+
+.star.bottom-right {
+  bottom: 5px;
+  right: 5px;
+}
+
+.star.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.speak-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.speak-button span {
+  margin-left: 10px;
+}

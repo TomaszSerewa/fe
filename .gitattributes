@@ -1,0 +1,6 @@
+# Ustawienie końców linii na LF dla wszystkich plików
+* text=auto eol=lf
+
+# Ustawienie końców linii na CRLF dla plików Windows
+*.bat text eol=crlf
+*.cmd text eol=crlf
