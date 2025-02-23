@@ -1,5 +1,5 @@
 header {
-    background-color: #4caf50;
+    background-color: #fffdfd;
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -8,7 +8,8 @@ header {
   }
   
   .logo {
-    font-size: 24px;
+    font-family: system-ui;
+    font-size: 48px;
     font-weight: bold;
   }
 
@@ -21,7 +22,6 @@ header {
   
   .login-form, .register-form {
     display: flex;
-    flex-direction: column;
   }
   
   .form-row {
@@ -40,7 +40,7 @@ header {
     height: 50px;
     border-radius: 50%;
     background-color: white;
-    color: #4caf50;
+    color: #dd3434;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,15 +60,17 @@ header {
   }
   
   button {
-    width: 140px;
-    background-color: #4caf50;
+    width: fit-content;
+    background-color: #dd3434;
     color: white;
     border: none;
     cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
-  
+
   button:hover {
-    background-color: #45a049;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.356);
+
   }
   
   .error-message {

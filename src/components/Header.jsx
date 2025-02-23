@@ -30,7 +30,7 @@ const Header = ({ setUserId }) => {
       } else {
         setLoggedInUser(loginValue);
         localStorage.setItem('loggedInUser', loginValue);
-        localStorage.setItem('userId', data.userId); // Zakładam, że API zwraca userId
+        localStorage.setItem('userId', data.userId); 
         setUserId(data.userId);
         console.log('Login successful:', data);
       }
@@ -64,28 +64,17 @@ const Header = ({ setUserId }) => {
     setLoggedInUser(null);
     localStorage.removeItem('loggedInUser');
     localStorage.removeItem('userId');
-    sessionStorage.removeItem('userId'); // Usuń userId z sessionStorage
+    sessionStorage.removeItem('userId'); 
     setUserId(null);
-    navigate('/'); // Przekierowanie na stronę główną
+    navigate('/'); 
   };
+  const enableLogin = false;
 
-  return (
-    <header>
-      <div className="logo">
-        <span style={{ color: 'red' }}>e</span>
-        <span style={{ color: 'orange' }}>d</span>
-        <span style={{ color: 'yellow' }}>u</span>
-        <span style={{ color: 'green' }}>k</span>
-        <span style={{ color: 'blue' }}>i</span>
-        <span style={{ color: 'indigo' }}>d</span>
-        <span style={{ color: 'violet' }}>o</span>
-        <span style={{ color: 'red' }}>s</span>
-        <span style={{ color: 'orange' }}>.</span>
-        <span style={{ color: 'yellow' }}>p</span>
-        <span style={{ color: 'green' }}>l</span>
-      </div>
-      <div className="forms">
-        {loggedInUser ? (
+  function showLoginform(){
+    if (enableLogin){
+      return (
+        <div className="forms">
+        {(loggedInUser) ? (
           <div className="welcome">
             <span>Witaj, {loggedInUser}</span>
             <button onClick={handleLogout}>Wyloguj</button>
@@ -106,18 +95,104 @@ const Header = ({ setUserId }) => {
               <div className="circle">LUB</div>
             </div>
             <form className="register-form" onSubmit={handleRegister}>
-              <div className="form-row">
                 <input type="text" value={registerLogin} onChange={(e) => setRegisterLogin(e.target.value)} placeholder="Login" maxLength="20" autoComplete="username"/>
-                <button type="submit">Zarejestruj</button>
-              </div>
-              <div className="form-row">
                 <input type="password" value={registerPassword} onChange={(e) => setRegisterPassword(e.target.value)} placeholder="Hasło" maxLength="20" autoComplete="new-password" />
                 <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Potwierdź hasło" maxLength="20" autoComplete="new-password" />
-              </div>
+                <button type="submit">Zarejestruj</button>
             </form>
           </>
         )}
       </div>
+      );
+    }
+  }
+
+  const logoLetters = [
+    { letter: 'e', color: 'black' },
+    { letter: 'd', color: '#dd3434' },
+    { letter: 'u', color: 'orange' },
+    { letter: 'k', color: 'gold' },
+    { letter: 'i', color: '#3cad3c' },
+    { letter: 'd', color: '#4c4ce6' },
+    { letter: 'o', color: 'indigo' },
+    { letter: 's', color: 'violet' },
+    { letter: '.', color: 'black' },
+    { letter: 'p', color: 'black' },
+    { letter: 'l', color: 'black' },
+  ];
+
+  const rainbowColors = ['#dd3434', 'orange', 'gold', '#3cad3c', '#4c4ce6', 'indigo', 'violet'];
+  const [currentColors, setCurrentColors] = useState(logoLetters);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newColor = rainbowColors[Math.floor(Math.random() * rainbowColors.length)];
+      setCurrentColors((prevColors) => {
+        const newColors = prevColors.map((item, index) => {
+          if (index === 0) {
+            return { ...item, color: newColor };
+          }
+          return item;
+        });
+        return newColors;
+      });
+
+      for (let i = 1; i <= 7; i++) {
+        setTimeout(() => {
+          setCurrentColors((prevColors) => {
+            const newColors = prevColors.map((item, index) => {
+              if (index === i) {
+                return { ...item, color: newColor };
+              }
+              return item;
+            });
+            return newColors;
+          });
+
+          setTimeout(() => {
+            setCurrentColors((prevColors) => {
+              const newColors = prevColors.map((item, index) => {
+                if (index === i) {
+                  return { ...item, color: logoLetters[index].color };
+                }
+                return item;
+              });
+              return newColors;
+            });
+          }, 1000);
+        }, i * 1000);
+      }
+
+      setTimeout(() => {
+        setCurrentColors((prevColors) => {
+          const newColors = prevColors.map((item, index) => {
+            if (index >= 8 && index <= 10) {
+              return { ...item, color: newColor };
+            }
+            return item;
+          });
+          return newColors;
+        });
+      }, 8000);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  function showLogo() {
+    return (
+      <div className="logo">
+        {currentColors.map((item, index) => (
+          <span key={index} style={{ color: item.color }}>{item.letter}</span>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <header>
+      {showLogo()}
+      {showLoginform()}
     </header>
   );
 };

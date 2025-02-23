@@ -1,5 +1,5 @@
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: system-ui;
   background-color: #f0f8ff;
   color: #333;
   margin: 0;
@@ -8,7 +8,7 @@ body {
 
 
 nav {
-  background-color: #cecf63;
+  background-color: #dd3434;
   padding: 10px;
 }
 
@@ -32,6 +32,6 @@ nav ul li a:hover {
 }
 
 h1 {
-  color: #4caf50;
+  color: #dd3434;
 }
 
