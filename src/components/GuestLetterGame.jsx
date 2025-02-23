@@ -94,10 +94,12 @@ const GuestLetterGame = () => {
       }
 
       if (option === currentLetter) {
-        setMessage('Correct!');
+        setMessage('ssss!');
+        speak(`Gratulacje, masz gwiazdkę!`);
         updatedStats[option].letterStats += 1;
       } else {
         setMessage('Try again!');
+        speak(`Spróbuj jeszcze raz!`);
         updatedStats[option].letterStats = 0;
         updatedStats[currentLetter].letterStats = 0;
       }
